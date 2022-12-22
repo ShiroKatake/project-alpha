@@ -5,10 +5,10 @@ namespace Health
 {
 	public class Health
 	{
-		private int _maxtHealth;
+		private int _maxHealth;
 		private int _currentHealth;
 
-		public int MaxHealth { get => _maxtHealth; }
+		public int MaxHealth { get => _maxHealth; }
 		public int CurrentHealth { get => _currentHealth; }
 
 		public event Action<int> OnDamageTaken;
@@ -17,7 +17,7 @@ namespace Health
 
 		public Health(int maxHealth)
 		{
-			_maxtHealth = maxHealth;
+			_maxHealth = maxHealth;
 			_currentHealth = maxHealth;
 		}
 
@@ -36,7 +36,7 @@ namespace Health
 
 		public void Heal(int amount)
 		{
-			_currentHealth = Mathf.Max(_maxtHealth, _currentHealth + amount);
+			_currentHealth = Mathf.Min(_maxHealth, _currentHealth + amount);
 			OnHealthGained?.Invoke(_currentHealth);
 		}
 	}
