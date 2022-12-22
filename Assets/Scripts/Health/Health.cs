@@ -39,6 +39,11 @@ namespace Health
 			_currentHealth = Mathf.Min(_maxHealth, _currentHealth + amount);
 			OnHealthGained?.Invoke(_currentHealth);
 		}
+
+		public void IncreaseMaxHealth(int amount)
+		{
+			_maxHealth += amount;
+		}
 	}
 
 }
