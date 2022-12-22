@@ -2,97 +2,101 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor;
 
-public class TimerBehaviour : MonoBehaviour
+namespace Timer
 {
-	private enum TimerType
+	public class TimerBehaviour : MonoBehaviour
 	{
-		Countdown,
-		Stopwatch
-	}
-
-	[SerializeField] private TimerType _timerType;
-	[SerializeField] private UnityEvent _onTimerEnd = null;
-	[SerializeField] private float _duration;
-
-	private Timer timer;
-
-	private void Awake()
-	{
-		if (_timerType == TimerType.Countdown)
+		private enum TimerType
 		{
-			timer = new Timer(_duration);
-			timer.OnCountdownEnd += HandleTimerEnd;
-		} else
-		{
-			timer = new Timer();
-		}
-	}
-
-	private void HandleTimerEnd()
-	{
-		_onTimerEnd.Invoke();
-	}
-
-	private void Update()
-	{
-		timer.Tick(Time.deltaTime);
-	}
-
-	#region Editor
-	[CustomEditor(typeof(TimerBehaviour))]
-	public class TimeBehaviourEditor : Editor
-	{
-		private TimerBehaviour timeBehaviour;
-
-		private SerializedProperty timerType;
-		private SerializedProperty duration;
-		private SerializedProperty onTimerEnd;
-		private SerializedProperty secondsPassed;
-
-		void OnEnable()
-		{
-			timeBehaviour = (TimerBehaviour)target;
-
-			// Link up the properties via the according field names
-			timerType = serializedObject.FindProperty(nameof(timeBehaviour._timerType));
-			duration = serializedObject.FindProperty(nameof(timeBehaviour._duration));
-			onTimerEnd = serializedObject.FindProperty(nameof(timeBehaviour._onTimerEnd));
+			Countdown,
+			Stopwatch
 		}
 
-		public override void OnInspectorGUI()
+		[SerializeField] private TimerType _timerType;
+		[SerializeField] private UnityEvent _onTimerEnd = null;
+		[SerializeField] private float _duration;
+
+		private Timer timer;
+
+		private void Awake()
 		{
-			// Draw the default script field
-			DrawScriptField();
-
-			serializedObject.Update();
-
-			// Draw the fields for if the timer is a countdown timer
-			EditorGUILayout.PropertyField(timerType);
-			if (timeBehaviour._timerType == TimerType.Countdown)
+			if (_timerType == TimerType.Countdown)
 			{
-				EditorGUILayout.PropertyField(duration);
-				EditorGUILayout.PropertyField(onTimerEnd);
+				timer = new Timer(_duration);
+				timer.OnCountdownEnd += HandleTimerEnd;
 			}
-
-			// Draw the fields for if the timer is a stopwatch
 			else
 			{
-				EditorGUI.BeginDisabledGroup(true);
-				EditorGUILayout.PropertyField(secondsPassed);
-				EditorGUI.EndDisabledGroup();
+				timer = new Timer();
+			}
+		}
+
+		private void HandleTimerEnd()
+		{
+			_onTimerEnd.Invoke();
+		}
+
+		private void Update()
+		{
+			timer.Tick(Time.deltaTime);
+		}
+
+		#region Editor
+		[CustomEditor(typeof(TimerBehaviour))]
+		public class TimeBehaviourEditor : Editor
+		{
+			private TimerBehaviour timeBehaviour;
+
+			private SerializedProperty timerType;
+			private SerializedProperty duration;
+			private SerializedProperty onTimerEnd;
+			private SerializedProperty secondsPassed;
+
+			void OnEnable()
+			{
+				timeBehaviour = (TimerBehaviour)target;
+
+				// Link up the properties via the according field names
+				timerType = serializedObject.FindProperty(nameof(timeBehaviour._timerType));
+				duration = serializedObject.FindProperty(nameof(timeBehaviour._duration));
+				onTimerEnd = serializedObject.FindProperty(nameof(timeBehaviour._onTimerEnd));
 			}
 
-			serializedObject.ApplyModifiedProperties();
-		}
+			public override void OnInspectorGUI()
+			{
+				// Draw the default script field
+				DrawScriptField();
 
-		private void DrawScriptField()
-		{
-			EditorGUI.BeginDisabledGroup(true);
-			EditorGUILayout.ObjectField("Script", MonoScript.FromMonoBehaviour(timeBehaviour), typeof(TimerBehaviour), false);
-			EditorGUI.EndDisabledGroup();
+				serializedObject.Update();
 
-			EditorGUILayout.Space();
+				// Draw the fields for if the timer is a countdown timer
+				EditorGUILayout.PropertyField(timerType);
+				if (timeBehaviour._timerType == TimerType.Countdown)
+				{
+					EditorGUILayout.PropertyField(duration);
+					EditorGUILayout.PropertyField(onTimerEnd);
+				}
+
+				// Draw the fields for if the timer is a stopwatch
+				else
+				{
+					EditorGUI.BeginDisabledGroup(true);
+					EditorGUILayout.PropertyField(secondsPassed);
+					EditorGUI.EndDisabledGroup();
+				}
+
+				serializedObject.ApplyModifiedProperties();
+			}
+
+			private void DrawScriptField()
+			{
+				EditorGUI.BeginDisabledGroup(true);
+				EditorGUILayout.ObjectField("Script", MonoScript.FromMonoBehaviour(timeBehaviour), typeof(TimerBehaviour), false);
+				EditorGUI.EndDisabledGroup();
+
+				EditorGUILayout.Space();
+			}
 		}
+		#endregion
 	}
-	#endregion
 }

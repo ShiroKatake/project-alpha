@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Health
+namespace HealthSystem
 {
     public class HealthBehaviour : MonoBehaviour
     {
@@ -11,7 +11,7 @@ namespace Health
 
         private Health _health;
         public Health Health { get => _health; }
-        
+
         private void Start()
         {
             _health = new Health(maxHealth);
@@ -20,13 +20,14 @@ namespace Health
         }
 
         private void OnDamageTaken(int amount)
-		{
+        {
             _onDamageTaken?.Invoke(amount);
         }
 
         private void OnHealthGained(int amount)
-		{
+        {
             _onHealthGained?.Invoke(amount);
         }
     }
+
 }

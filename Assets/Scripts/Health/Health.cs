@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Health
+namespace HealthSystem
 {
 	public class Health
 	{
@@ -45,5 +45,6 @@ namespace Health
 			_maxHealth += amount;
 		}
 	}
+
 
 }
