@@ -1,25 +1,119 @@
-using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
-using UnityEngine;
 using UnityEngine.TestTools;
 
-public class HealthTests
+namespace Health
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void HealthTestsSimplePasses()
+    [ExcludeFromCoverage]
+    public class HealthTests
     {
-        // Use the Assert class to test conditions
+        [Test]
+        public void HealthAndMaxHealthIsSet()
+        {
+            Health health = new Health(10);
+            Assert.AreEqual(10, health.CurrentHealth);
+            Assert.AreEqual(10, health.MaxHealth);
+        }
+
+        [Test]
+        public void TakeDamage_HealthIsLost()
+        {
+            Health health = new Health(10);
+
+            health.TakeDamage(1);
+            Assert.AreEqual(10, health.MaxHealth);
+            Assert.AreEqual(9, health.CurrentHealth);
+        }
+
+        [Test]
+        public void TakeDamage_HealthDoesDecreaseBelowZero()
+        {
+            Health health = new Health(1);
+
+            health.TakeDamage(2);
+            Assert.AreEqual(0, health.CurrentHealth);
+        }
+
+        [Test]
+        public void TakeDamage_EventIsRaised()
+        {
+            Health health = new Health(10);
+            bool damageTakenEventHasBeenRaised = false;
+            bool deathEventHasBeenRaised = false;
+            health.OnDamageTaken += (amount) => { damageTakenEventHasBeenRaised = true; };
+            health.OnDeath += () => { deathEventHasBeenRaised = true; };
+
+            health.TakeDamage(1);
+            Assert.IsTrue(damageTakenEventHasBeenRaised);
+            Assert.IsFalse(deathEventHasBeenRaised);
+        }
+
+        [Test]
+        public void HealthReachesZero_EventIsRaised()
+        {
+            Health health = new Health(1);
+            bool damageTakenEventHasBeenRaised = false;
+            bool deathEventHasBeenRaised = false;
+            health.OnDamageTaken += (amount) => { damageTakenEventHasBeenRaised = true; };
+            health.OnDeath += () => { deathEventHasBeenRaised = true; };
+
+            health.TakeDamage(1);
+            Assert.IsTrue(damageTakenEventHasBeenRaised);
+            Assert.IsTrue(deathEventHasBeenRaised);
+        }
+
+        [Test]
+        public void HealthReachesZero_CannotTakeDamage()
+        {
+            Health health = new Health(0);
+            bool damageTakenEventHasBeenRaised = false;
+            bool deathEventHasBeenRaised = false;
+            health.OnDamageTaken += (amount) => { damageTakenEventHasBeenRaised = true; };
+            health.OnDeath += () => { deathEventHasBeenRaised = true; };
+
+            health.TakeDamage(1);
+            Assert.IsFalse(damageTakenEventHasBeenRaised);
+            Assert.IsFalse(deathEventHasBeenRaised);
+        }
+
+        [Test]
+        public void Heal_HealthIsGained()
+        {
+            Health health = new Health(10);
+            health.TakeDamage(2);
+
+            health.Heal(1);
+            Assert.AreEqual(10, health.MaxHealth);
+            Assert.AreEqual(9, health.CurrentHealth);
+        }
+
+        [Test]
+        public void Heal_HealthDoesNotIncreaseAboveMaxHealth()
+        {
+            Health health = new Health(10);
+
+            health.Heal(1);
+            Assert.AreEqual(10, health.CurrentHealth);
+        }
+
+        [Test]
+        public void Heal_EventIsRaised()
+        {
+            Health health = new Health(10);
+            bool eventHasBeenRaised = false;
+            health.OnHealthGained += (amount) => { eventHasBeenRaised = true;  };
+
+            health.Heal(1);
+            Assert.IsTrue(eventHasBeenRaised);
+        }
+
+        [Test]
+        public void IncreaseMaxHealth_MaxHealthIsIncreased()
+        {
+            Health health = new Health(10);
+
+            health.IncreaseMaxHealth(1);
+            Assert.AreEqual(11, health.MaxHealth);
+        }
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator HealthTestsWithEnumeratorPasses()
-    {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
-    }
 }
