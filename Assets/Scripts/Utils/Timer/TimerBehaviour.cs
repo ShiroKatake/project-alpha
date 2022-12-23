@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor;
 
-namespace Timer
+namespace TimerSystem
 {
 	public class TimerBehaviour : MonoBehaviour
 	{
