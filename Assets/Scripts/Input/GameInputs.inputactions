@@ -22,6 +22,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Abiliity 1",
+                    "type": "Button",
+                    "id": "aada28ab-7a59-4954-af34-8bb67b68a7a2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "SlowTap(duration=0.1,pressPoint=0.1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Abiliity 2",
+                    "type": "Button",
+                    "id": "eaf1c108-82b5-455e-a888-82551ba90adf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "SlowTap(duration=0.1,pressPoint=0.1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Abiliity 3",
+                    "type": "Button",
+                    "id": "e8de2a4a-30e6-46af-8a2d-97622a5de2a2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "SlowTap(duration=0.1,pressPoint=0.1)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -90,6 +117,39 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "7d773557-8883-4b08-a238-2955b96e8ef1",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Abiliity 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1be1f550-ca5c-4c25-8aa5-80521edea322",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Abiliity 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2ece9c0-31fd-45bc-a2ba-2a1f92b363b9",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Abiliity 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
