@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcdf112416acf54c80dff5374e66612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitbox: {fileID: 0}
   _ammoCost: 3
 --- !u!4 &120190923
 Transform:
@@ -228,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcdf112416acf54c80dff5374e66612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitbox: {fileID: 0}
   _ammoCost: 1
 --- !u!4 &441749258
 Transform:
@@ -340,6 +342,8 @@ GameObject:
   - component: {fileID: 752103408}
   - component: {fileID: 752103406}
   - component: {fileID: 752103407}
+  - component: {fileID: 752103410}
+  - component: {fileID: 752103411}
   - component: {fileID: 752103409}
   m_Layer: 0
   m_Name: Apawllo
@@ -421,11 +425,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10af3b143c08aa447b26062dbfef386b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &752103410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752103402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6023f0b24ec024793d91538896b329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _ammoCapacity: 10
-  _ammoChargeSpeed: 1
   _ammoRefillSpeed: 1
-  ammoChargeDebug: 0
-  ammoCountDebug: 0
+--- !u!114 &752103411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752103402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf23b419e5c0431458a86da7dbacccc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _bullet1: {fileID: 441749257}
   _bullet2: {fileID: 1601345571}
   _bullet3: {fileID: 120190922}
@@ -542,6 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcdf112416acf54c80dff5374e66612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitbox: {fileID: 0}
   _ammoCost: 2
 --- !u!4 &1601345572
 Transform:

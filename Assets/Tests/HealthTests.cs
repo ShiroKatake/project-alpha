@@ -2,7 +2,6 @@ using NUnit.Framework;
 using UnityEngine.TestTools;
 using HealthSystem;
 
-[ExcludeFromCoverage]
 public class HealthTests
 {
     [Test]

@@ -1,53 +1,21 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ShootBehaviour : MonoBehaviour
+namespace ShootSystem
 {
-    [SerializeField] private int _ammoCapacity;
-    [SerializeField] private float _ammoChargeSpeed;
-    [SerializeField] private float _ammoRefillSpeed;
-
-    [Header("Bullet Loadout")]
-    [SerializeField] private Bullet _bullet1;
-    [SerializeField] private Bullet _bullet2;
-    [SerializeField] private Bullet _bullet3;
-
-    private Ammo _ammo;
-    private BulletLoadout _bulletLoadout;
-    private Bullet _loadedBullet;
-
-    private void Start()
+    public class ShootBehaviour : MonoBehaviour
     {
-        _ammo = new Ammo(_ammoCapacity);
-		_bulletLoadout = new BulletLoadout(new Dictionary<int, Bullet>());
+        private Ammo _ammo;
+        private BulletLoadout _bulletLoadout;
+        private Shoot _shoot;
 
-        // Test code
-		_bulletLoadout.AddBulletToLoadout(0, _bullet1);
-        _bulletLoadout.AddBulletToLoadout(1, _bullet2);
-        _bulletLoadout.AddBulletToLoadout(2, _bullet3);
-    }
+        public Shoot Shoot { get => _shoot; }
 
-	private void Update()
-	{
-        _ammo.RefillAmmo(_ammoRefillSpeed * Time.deltaTime);
-    }
-
-	public void LoadBullet(int loadoutIndex)
-    {
-        _loadedBullet = _bulletLoadout.GetBullet(loadoutIndex);
-        Debug.Log("Loaded");
-    }
-
-    public void ShootBullet()
-    {
-        if (_loadedBullet == null) return;
-
-        if (!_ammo.TryConsumeAmmo(_loadedBullet.AmmoCost))
-		{
-            Debug.Log("Whiff");
-            return;
+        private void Start()
+        {
+            _ammo = GetComponent<AmmoBehaviour>().Ammo;
+            _bulletLoadout = GetComponent <BulletLoadoutBehaviour>().BulletLoadout;
+            _shoot = new Shoot(_ammo, _bulletLoadout);
         }
-
-        Debug.Log($"Releasing {_loadedBullet.AmmoCost}");
     }
 }

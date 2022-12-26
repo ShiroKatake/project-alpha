@@ -2,7 +2,6 @@ using NUnit.Framework;
 using UnityEngine.TestTools;
 using TimerSystem;
 
-[ExcludeFromCoverage]
 public class StopwatchTests
 {
 	[Test]

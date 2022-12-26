@@ -28,15 +28,6 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
             ""id"": ""6ee68d97-f075-4ebd-8297-7a58394107b9"",
             ""actions"": [
                 {
-                    ""name"": ""Shoot"",
-                    ""type"": ""Button"",
-                    ""id"": ""747c8d3a-58e9-4b92-8fd9-90cc7d4a764f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Hold"",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""cc83aa9d-32d1-49fc-8b02-f7372bad757c"",
@@ -46,42 +37,73 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Abiliity 1"",
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""747c8d3a-58e9-4b92-8fd9-90cc7d4a764f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability 1"",
                     ""type"": ""Button"",
                     ""id"": ""aada28ab-7a59-4954-af34-8bb67b68a7a2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""SlowTap(duration=0.1,pressPoint=0.1)"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Abiliity 2"",
+                    ""name"": ""Ability 2"",
                     ""type"": ""Button"",
                     ""id"": ""eaf1c108-82b5-455e-a888-82551ba90adf"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""SlowTap(duration=0.1,pressPoint=0.1)"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Abiliity 3"",
+                    ""name"": ""Ability 3"",
                     ""type"": ""Button"",
                     ""id"": ""e8de2a4a-30e6-46af-8a2d-97622a5de2a2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""SlowTap(duration=0.1,pressPoint=0.1)"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""749acca6-2f3d-4e79-99dc-a64ce5bd5551"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""b2ece9c0-31fd-45bc-a2ba-2a1f92b363b9"",
+                    ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Shoot"",
+                    ""action"": ""Ability 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1be1f550-ca5c-4c25-8aa5-80521edea322"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d773557-8883-4b08-a238-2955b96e8ef1"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability 1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -142,34 +164,12 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7d773557-8883-4b08-a238-2955b96e8ef1"",
-                    ""path"": ""<Keyboard>/1"",
+                    ""id"": ""749acca6-2f3d-4e79-99dc-a64ce5bd5551"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Abiliity 1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1be1f550-ca5c-4c25-8aa5-80521edea322"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Abiliity 2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b2ece9c0-31fd-45bc-a2ba-2a1f92b363b9"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Abiliity 3"",
+                    ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -180,11 +180,11 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Abiliity1 = m_Player.FindAction("Abiliity 1", throwIfNotFound: true);
-        m_Player_Abiliity2 = m_Player.FindAction("Abiliity 2", throwIfNotFound: true);
-        m_Player_Abiliity3 = m_Player.FindAction("Abiliity 3", throwIfNotFound: true);
+        m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_Ability1 = m_Player.FindAction("Ability 1", throwIfNotFound: true);
+        m_Player_Ability2 = m_Player.FindAction("Ability 2", throwIfNotFound: true);
+        m_Player_Ability3 = m_Player.FindAction("Ability 3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -244,20 +244,20 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Abiliity1;
-    private readonly InputAction m_Player_Abiliity2;
-    private readonly InputAction m_Player_Abiliity3;
+    private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_Ability1;
+    private readonly InputAction m_Player_Ability2;
+    private readonly InputAction m_Player_Ability3;
     public struct PlayerActions
     {
         private @GameInputs m_Wrapper;
         public PlayerActions(@GameInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Abiliity1 => m_Wrapper.m_Player_Abiliity1;
-        public InputAction @Abiliity2 => m_Wrapper.m_Player_Abiliity2;
-        public InputAction @Abiliity3 => m_Wrapper.m_Player_Abiliity3;
+        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        public InputAction @Ability1 => m_Wrapper.m_Player_Ability1;
+        public InputAction @Ability2 => m_Wrapper.m_Player_Ability2;
+        public InputAction @Ability3 => m_Wrapper.m_Player_Ability3;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -267,50 +267,50 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
-                @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
-                @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Abiliity1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbiliity1;
-                @Abiliity1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbiliity1;
-                @Abiliity1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbiliity1;
-                @Abiliity2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbiliity2;
-                @Abiliity2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbiliity2;
-                @Abiliity2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbiliity2;
-                @Abiliity3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbiliity3;
-                @Abiliity3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbiliity3;
-                @Abiliity3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbiliity3;
+                @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Ability1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbility1;
+                @Ability1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbility1;
+                @Ability1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbility1;
+                @Ability2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbility2;
+                @Ability2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbility2;
+                @Ability2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbility2;
+                @Ability3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbility3;
+                @Ability3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbility3;
+                @Ability3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbility3;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Shoot.started += instance.OnShoot;
-                @Shoot.performed += instance.OnShoot;
-                @Shoot.canceled += instance.OnShoot;
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Abiliity1.started += instance.OnAbiliity1;
-                @Abiliity1.performed += instance.OnAbiliity1;
-                @Abiliity1.canceled += instance.OnAbiliity1;
-                @Abiliity2.started += instance.OnAbiliity2;
-                @Abiliity2.performed += instance.OnAbiliity2;
-                @Abiliity2.canceled += instance.OnAbiliity2;
-                @Abiliity3.started += instance.OnAbiliity3;
-                @Abiliity3.performed += instance.OnAbiliity3;
-                @Abiliity3.canceled += instance.OnAbiliity3;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
+                @Ability1.started += instance.OnAbility1;
+                @Ability1.performed += instance.OnAbility1;
+                @Ability1.canceled += instance.OnAbility1;
+                @Ability2.started += instance.OnAbility2;
+                @Ability2.performed += instance.OnAbility2;
+                @Ability2.canceled += instance.OnAbility2;
+                @Ability3.started += instance.OnAbility3;
+                @Ability3.performed += instance.OnAbility3;
+                @Ability3.canceled += instance.OnAbility3;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
     public interface IPlayerActions
     {
-        void OnShoot(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
-        void OnAbiliity1(InputAction.CallbackContext context);
-        void OnAbiliity2(InputAction.CallbackContext context);
-        void OnAbiliity3(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        void OnAbility1(InputAction.CallbackContext context);
+        void OnAbility2(InputAction.CallbackContext context);
+        void OnAbility3(InputAction.CallbackContext context);
     }
 }
