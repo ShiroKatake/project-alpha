@@ -16,13 +16,13 @@ namespace ShootSystem
         {
             if (bullet == null) return;
 
-            if (_bulletLoadout.ContainsKey(loadoutIndex) && _bulletLoadout[loadoutIndex] == bullet)
+            if (bullet.LoadoutIndex > -1)
             {
-                Debug.Log($"That bullet is already assigned to slot ${loadoutIndex + 1}");
-                return;
+                RemoveBulletFromLoadout(bullet.LoadoutIndex);
             }
 
             // This will update the current index or create a new one if it doesn't exist
+            bullet.LoadoutIndex = loadoutIndex;
             _bulletLoadout[loadoutIndex] = bullet;
         }
 
@@ -30,11 +30,11 @@ namespace ShootSystem
         {
             if (!_bulletLoadout.ContainsKey(loadoutIndex))
             {
-                Debug.Log($"There is no bullet with that cost to remove");
                 return;
             }
 
             // Remove the key instead of setting value to null will make checking whether or not a bullet is assigned to it quicker
+            _bulletLoadout[loadoutIndex].LoadoutIndex = -1;
             _bulletLoadout.Remove(loadoutIndex);
         }
 
