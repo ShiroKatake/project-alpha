@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootSystem
 {
-    public class Ammo
+    public class AmmoMagazine
     {
         private int _ammoCapacity;
         private float _currentAmmoCount;
@@ -12,7 +12,7 @@ namespace ShootSystem
 
         public float CurrentAmmoCount { get => _currentAmmoCount; }
 
-        public Ammo(int ammoCapacity)
+        public AmmoMagazine(int ammoCapacity)
         {
             _ammoCapacity = ammoCapacity;
             _currentAmmoCount = ammoCapacity;

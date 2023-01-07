@@ -1,25 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ShootSystem
 {
     public class AmmoBehaviour : MonoBehaviour
     {
-        [SerializeField] private int _ammoCapacity;
-        [SerializeField] private float _ammoRefillSpeed;
+        [SerializeField] private Collider2D hitbox;
+        [SerializeField] private int _ammoCost;
 
-        private Ammo _ammo;
+        private Ammo ammo;
 
-        public Ammo Ammo { get => _ammo; }
+        public Ammo Ammo { get => ammo; }
+
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
-            _ammo = new Ammo(_ammoCapacity);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            _ammo.RefillAmmo(_ammoRefillSpeed * Time.deltaTime);
+            ammo = new Ammo(_ammoCost);
         }
     }
 }

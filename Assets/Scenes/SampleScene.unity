@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b081fd29344624bbdf78e59ded6440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 20
   _onDamageTaken:
     m_PersistentCalls:
       m_Calls: []
@@ -451,6 +451,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf23b419e5c0431458a86da7dbacccc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ammo1: {fileID: 441749259}
+  _ammo2: {fileID: 1601345573}
+  _ammo3: {fileID: 120190924}
 --- !u!1 &1010202340
 GameObject:
   m_ObjectHideFlags: 0
