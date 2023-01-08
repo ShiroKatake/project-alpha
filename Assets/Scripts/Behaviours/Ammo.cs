@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ShootSystem
 {
-    public class AmmoBehaviour : MonoBehaviour
+    public class Ammo : MonoBehaviour
     {
         [SerializeField] private AmmoType _ammoType;
 

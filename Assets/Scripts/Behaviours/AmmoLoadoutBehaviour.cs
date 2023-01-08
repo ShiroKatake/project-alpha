@@ -5,9 +5,9 @@ namespace ShootSystem
 {
     public class AmmoLoadoutBehaviour : MonoBehaviour
     {
-        [SerializeField] private AmmoBehaviour _ammo1;
-        [SerializeField] private AmmoBehaviour _ammo2;
-        [SerializeField] private AmmoBehaviour _ammo3;
+        [SerializeField] private Ammo _ammo1;
+        [SerializeField] private Ammo _ammo2;
+        [SerializeField] private Ammo _ammo3;
 
         private AmmoLoadout _ammoLoadout;
 
