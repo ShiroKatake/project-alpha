@@ -15,7 +15,7 @@ namespace ShootSystem
 
         void Awake()
         {
-            _ammoLoadout = new AmmoLoadout(_ammo1.Ammo, _ammo2.Ammo, _ammo3.Ammo);
+            _ammoLoadout = new AmmoLoadout(_ammo1.AmmoType, _ammo2.AmmoType, _ammo3.AmmoType);
         }
     }
 }

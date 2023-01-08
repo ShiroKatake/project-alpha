@@ -4,34 +4,34 @@ namespace ShootSystem
 {
     public class AmmoLoadout
     {
-        private Dictionary<int, Ammo> _ammoLoadout = new Dictionary<int, Ammo>();
+        private Dictionary<int, AmmoType> _ammoLoadout = new Dictionary<int, AmmoType>();
 
         public AmmoLoadout()
         {
-            _ammoLoadout = new Dictionary<int, Ammo>();
+            _ammoLoadout = new Dictionary<int, AmmoType>();
         }
 
-        public AmmoLoadout(params Ammo[] ammo)
+        public AmmoLoadout(params AmmoType[] ammoType)
         {
-            _ammoLoadout = new Dictionary<int, Ammo>();
-			for (int i = 0; i < ammo.Length; i++)
+            _ammoLoadout = new Dictionary<int, AmmoType>();
+			for (int i = 0; i < ammoType.Length; i++)
 			{
-                AddAmmoToLoadout(i, ammo[i]);
+                AddAmmoToLoadout(i, ammoType[i]);
 			}
         }
 
-        public void AddAmmoToLoadout(int loadoutIndex, Ammo ammo)
+        public void AddAmmoToLoadout(int loadoutIndex, AmmoType ammoType)
         {
-            if (ammo == null) return;
+            if (ammoType == null) return;
 
-            if (ammo.LoadoutIndex > -1)
+            if (ammoType.loadoutIndex > -1)
             {
-                RemoveAmmoFromLoadout(ammo.LoadoutIndex);
+                RemoveAmmoFromLoadout(ammoType.loadoutIndex);
             }
 
             // This will update the current index or create a new one if it doesn't exist
-            ammo.LoadoutIndex = loadoutIndex;
-            _ammoLoadout[loadoutIndex] = ammo;
+            ammoType.loadoutIndex = loadoutIndex;
+            _ammoLoadout[loadoutIndex] = ammoType;
         }
 
         public void RemoveAmmoFromLoadout(int loadoutIndex)
@@ -41,12 +41,12 @@ namespace ShootSystem
                 return;
             }
 
-            // Remove the key instead of setting value to null will make checking whether or not a ammo is assigned to it quicker
-            _ammoLoadout[loadoutIndex].LoadoutIndex = -1;
+            // Remove the key instead of setting value to null will make checking whether or not a ammoType is assigned to it quicker
+            _ammoLoadout[loadoutIndex].loadoutIndex = -1;
             _ammoLoadout.Remove(loadoutIndex);
         }
 
-        public Ammo GetAmmo(int loadoutIndex)
+        public AmmoType GetAmmo(int loadoutIndex)
         {
             if (!_ammoLoadout.ContainsKey(loadoutIndex)) return null;
 

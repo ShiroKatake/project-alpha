@@ -1,22 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ShootSystem
 {
     public class AmmoBehaviour : MonoBehaviour
     {
-        [SerializeField] private Collider2D hitbox;
-        [SerializeField] private int _ammoCost;
+        [SerializeField] private AmmoType _ammoType;
 
-        private Ammo ammo;
+        public AmmoType AmmoType => _ammoType;
 
-        public Ammo Ammo { get => ammo; }
-
-        // Start is called before the first frame update
-        void Awake()
-        {
-            ammo = new Ammo(_ammoCost);
-        }
-    }
+		private void OnTriggerEnter2D(Collider2D collision)
+		{
+			// Bring back to pool
+		}
+	}
 }
