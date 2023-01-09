@@ -1,13 +1,12 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ShootSystem
 {
     public class AmmoLoadoutBehaviour : MonoBehaviour
     {
-        [SerializeField] private Ammo _ammo1;
-        [SerializeField] private Ammo _ammo2;
-        [SerializeField] private Ammo _ammo3;
+        [SerializeField] private AmmoType _ammoType1;
+        [SerializeField] private AmmoType _ammoType2;
+        [SerializeField] private AmmoType _ammoType3;
 
         private AmmoLoadout _ammoLoadout;
 
@@ -15,7 +14,7 @@ namespace ShootSystem
 
         void Awake()
         {
-            _ammoLoadout = new AmmoLoadout(_ammo1.AmmoType, _ammo2.AmmoType, _ammo3.AmmoType);
+            _ammoLoadout = new AmmoLoadout(_ammoType1, _ammoType2, _ammoType3);
         }
     }
 }
