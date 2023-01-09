@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88dcf8814277d62429c3502cfca7f6d1, type: 3}
   m_Name: Heavy Ammo
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 68e5a78013e33f247822a837e55b0ab4, type: 3}
   ammoCost: 3
   damage: 3
-  loadoutIndex: 0
+  lifetimeSeconds: 3
+  loadoutIndex: 2

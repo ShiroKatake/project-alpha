@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88dcf8814277d62429c3502cfca7f6d1, type: 3}
   m_Name: Light Ammo
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
   ammoCost: 1
   damage: 1
+  lifetimeSeconds: 1
   loadoutIndex: 0
